@@ -47,16 +47,19 @@ describe("Users", function() {
         errorResponses.invalidPassword
       );
     });
-
-    it(`should login a user and return success message if user provide valid login credentials`, async () => {
-      const response = await AppTest.post("/auth/login").send({
-        username: "tooolP",
-        password: "tooolP233p0o"
-      });
-      expect(response.body.data.message).to.equal(
-        successResponses.userLoggedIn
-      );
-      expect(response.status).to.equal(200);
+    it("should login a user successfully if user provide required credentials", done => {
+      AppTest.post("/auth/login")
+        .send({
+          username: "tooolP",
+          password: "passeD98Ooo"
+        })
+        .then(response => {
+          expect(response.body.data.message).to.equal(
+            successResponses.userLoggedIn
+          );
+          expect(response.status).to.equal(200);
+        });
+      done();
     });
   });
 });
