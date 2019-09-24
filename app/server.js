@@ -2,16 +2,20 @@ import express from 'express';
 import cors from 'cors';
 import dotEnv from 'dotenv';
 
+import routes from './routes';
+
 const app = express();
 dotEnv.config();
 
 app.use(express.json());
 app.use(cors());
 
+routes(app);
+
 app.use((req, res, next) => {
-  return res.status(200).json({
-    message: 'welcome',
-    status: true,
+  return res.status(404).json({
+    message: 'Resource not found',
+    status: false,
   });
 });
 
