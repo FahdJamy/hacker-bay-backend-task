@@ -42,5 +42,5 @@ export const userLoginSchema = Joi.object({
         }
       });
       return errors;
-    })
+    }),
 });

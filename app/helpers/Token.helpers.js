@@ -5,7 +5,7 @@ dotEnv.config();
 
 const tokenSignatures = {
   algorithm: "HS256",
-  expiresIn: "1d"
+  expiresIn: "1d",
 };
 
 export default class TokenHelper {
@@ -20,5 +20,18 @@ export default class TokenHelper {
       tokenSignatures
     );
     return token;
+  }
+
+  /**
+   * @param  {string} token
+   * @returns User decoded payload
+   */
+  static decodeToken(token) {
+    try {
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
+      return decoded;
+    } catch (error) {
+      return null;
+    }
   }
 }

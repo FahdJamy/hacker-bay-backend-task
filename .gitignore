@@ -25,6 +25,11 @@ pids
 *.pid
 *.seed
 
+# images
+*.jpeg
+*.jpg
+*.png
+
 # Coverage directory
 coverage
 /client/coverage
