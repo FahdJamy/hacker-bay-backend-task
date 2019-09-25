@@ -15,7 +15,7 @@ routes(app);
 app.use((req, res, next) => {
   return res.status(404).json({
     message: "Resource not found",
-    status: false
+    status: false,
   });
 });
 
