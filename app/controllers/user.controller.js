@@ -10,9 +10,9 @@ export class UserController {
     return res.status(200).json({
       data: {
         ...payload,
-        message: successResponses.userLoggedIn
+        message: successResponses.userLoggedIn,
       },
-      success: true
+      success: true,
     });
   }
 }

@@ -10,7 +10,7 @@ export default class JoiValidator {
       });
       return res.status(400).send({
         error: { message: errors[0] },
-        success: false
+        success: false,
       });
     }
     next();

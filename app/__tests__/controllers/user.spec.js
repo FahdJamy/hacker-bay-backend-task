@@ -14,7 +14,7 @@ describe("Users", function() {
 
     it(`returns message ${errorResponses.usernameRequired} if user doesnot provide username`, async () => {
       const response = await AppTest.post("/auth/login").send({
-        password: "tooolP"
+        password: "tooolP",
       });
       expect(response.body.error.message).to.equal(
         errorResponses.usernameRequired
@@ -23,7 +23,7 @@ describe("Users", function() {
 
     it(`returns message ${errorResponses.invalidUsername} if username doesnot meet required criteria`, async () => {
       const response = await AppTest.post("/auth/login").send({
-        username: "t"
+        username: "t",
       });
       expect(response.body.error.message).to.equal(
         errorResponses.invalidUsername
@@ -32,7 +32,7 @@ describe("Users", function() {
 
     it(`returns message ${errorResponses.passwordRequired} if user doesnot provide password`, async () => {
       const response = await AppTest.post("/auth/login").send({
-        username: "tooolP"
+        username: "tooolP",
       });
       expect(response.body.error.message).to.equal(
         errorResponses.passwordRequired
@@ -41,7 +41,7 @@ describe("Users", function() {
     it(`returns message ${errorResponses.invalidPassword} if user provides a password that doesnot meet criteria`, async () => {
       const response = await AppTest.post("/auth/login").send({
         username: "tooolP",
-        password: "tooolP"
+        password: "tooolP",
       });
       expect(response.body.error.message).to.equal(
         errorResponses.invalidPassword
@@ -51,7 +51,7 @@ describe("Users", function() {
       AppTest.post("/auth/login")
         .send({
           username: "tooolP",
-          password: "passeD98Ooo"
+          password: "passeD98Ooo",
         })
         .then(response => {
           expect(response.body.data.message).to.equal(

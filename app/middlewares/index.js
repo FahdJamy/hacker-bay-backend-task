@@ -1,8 +1,12 @@
 import JoiValidator from "./Joi";
-import { userLoginSchema } from "./Joi/Schemas/user.schema";
+import { userLoginSchema, imageSchema } from "./Joi/Schemas";
 
 export const validateLoginBody = (req, res, next) => {
   return JoiValidator.validateRequestBody(req, res, next, userLoginSchema);
 };
 
-export default validateLoginBody;
+export const validateImagePath = (req, res, next) => {
+  return JoiValidator.validateRequestBody(req, res, next, imageSchema);
+};
+
+export { authenticate } from "./auth";
