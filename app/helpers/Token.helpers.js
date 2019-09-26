@@ -11,7 +11,7 @@ const tokenSignatures = {
 export default class TokenHelper {
   /**
    * @param  {object} payload
-   * @returns Promise
+   * @returns Promise<token>
    */
   static async generateToken(payload) {
     const token = await jwt.sign(

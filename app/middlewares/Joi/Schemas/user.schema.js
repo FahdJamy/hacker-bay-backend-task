@@ -7,6 +7,7 @@ import { errorResponses } from "../../../constants";
 export const userLoginSchema = Joi.object({
   username: Joi.string()
     .alphanum()
+    .trim()
     .min(3)
     .max(30)
     .required()
@@ -28,6 +29,7 @@ export const userLoginSchema = Joi.object({
   password: Joi.string()
     .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/)
     .required()
+    .trim()
     .error(errors => {
       errors.forEach(err => {
         switch (err.code) {
@@ -36,6 +38,9 @@ export const userLoginSchema = Joi.object({
             break;
           case "string.pattern.base":
             err.message = errorResponses.invalidPassword;
+            break;
+          case "string.empty":
+            err.message = errorResponses.emptyPassword;
             break;
           default:
             break;

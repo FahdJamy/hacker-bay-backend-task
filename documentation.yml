@@ -31,7 +31,17 @@ paths:
       tags:
         - Login
       description: Log abitrary user and send back a token
-      summary: Log in an existing user
+      summary: Log an abitrary user
+      parameters:
+        - name: body
+          required: true
+          in: body
+          schema:
+            properties:
+              username:
+                type: string
+              password:
+                type: string
   /image/thumbnail:
     post:
       responses:
@@ -42,8 +52,16 @@ paths:
       tags:
         - Thumbnail
       summary: Download and thumbnail an image
+      parameters:
+        - name: body
+          required: true
+          in: body
+          schema:
+            properties:
+              imageUrl:
+                type: string
   /json/patch:
-    post:
+    patch:
       responses:
         '200':
           description: 200 OK
@@ -52,6 +70,17 @@ paths:
       tags:
         - Json-patch
       summary: Download and thumbnail an image
+      parameters:
+        - name: body
+          required: true
+          in: body
+          schema:
+            properties:
+              document:
+                type: object
+              patch:
+                type: array
+                example: ['{ op: string, path: string, value: string}']
 definitions:
   LoginResponse:
     properties:
