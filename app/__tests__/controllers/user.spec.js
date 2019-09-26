@@ -38,6 +38,15 @@ describe("Users", function() {
         errorResponses.passwordRequired
       );
     });
+    it(`returns message ${errorResponses.emptyPassword} if password is empty`, async () => {
+      const response = await AppTest.post("/auth/login").send({
+        username: "googleBack",
+        password: "  ",
+      });
+      expect(response.body.error.message).to.equal(
+        errorResponses.emptyPassword
+      );
+    });
     it(`returns message ${errorResponses.invalidPassword} if user provides a password that doesnot meet criteria`, async () => {
       const response = await AppTest.post("/auth/login").send({
         username: "tooolP",

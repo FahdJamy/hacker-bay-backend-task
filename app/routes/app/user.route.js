@@ -1,3 +1,4 @@
+// All routes that map to User resources are defined here
 import { Router } from "express";
 
 import { validateLoginBody } from "../../middlewares";

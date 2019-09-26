@@ -10,6 +10,11 @@ export class AppTest {
     const request = this.app.post(`${version}${url}`);
     return request;
   };
+
+  static patch = url => {
+    const request = this.app.patch(`${version}${url}`);
+    return request;
+  };
 }
 
 export default AppTest;
