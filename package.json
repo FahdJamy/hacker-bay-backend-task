@@ -53,9 +53,12 @@
     "request": "^2.88.0",
     "sharp": "^0.23.0",
     "supertest": "^4.0.2",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui-express": "^4.1.1",
     "uuid4": "^1.1.4",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "webpack-dev-server": "^3.8.1",
+    "yamljs": "^0.3.0"
   }
 }
