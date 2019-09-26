@@ -1,0 +1,109 @@
+swagger: '2.0'
+info:
+  title: hacker-bay-backend
+  version: 1.0.0
+schemes:
+  - http
+  - https
+host: 0.0.0.0:8000
+basePath: /api/v1
+consumes:
+  - application/json
+  - multipart/form-data
+produces:
+  - application/json
+securityDefinitions:
+  bearerToken:
+    type: apiKey
+    in: header
+    name: Authorization
+security:
+  - bearerToken: []
+
+paths:
+  /auth/login:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/LoginResponse'
+      tags:
+        - Login
+      description: Log abitrary user and send back a token
+      summary: Log in an existing user
+  /image/thumbnail:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/Thumbnail'
+      tags:
+        - Thumbnail
+      summary: Download and thumbnail an image
+  /json/patch:
+    post:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/Json'
+      tags:
+        - Json-patch
+      summary: Download and thumbnail an image
+definitions:
+  LoginResponse:
+    properties:
+      success:
+        type: boolean
+        example: success
+      message:
+        type: string
+        example: Successfully logged in!
+      data:
+        type: object
+        properties:
+          user:
+            properties:
+              username:
+                type: string
+                example: 23admin
+              token:
+                type: string
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNjNmRkMDEzZTAyMWExMTY3Yjk0ZmQ2NyIsInVzZXJuYW1lIjoiZXhhbXBsZUBVc2VyIiwiZW1haWwiOiJ4eHh4eHh4eEBleGFtcGxlLmNvbSIsImdyb3VwcyI6WyI1YzZkZDUxN2UwMjFhMDA2N2I5NGZkNjYiXSwiaWF0IjoxNTUwOTY2MzM3fQ.DJPUChNQpGkke_EOY82bB_aDeHwlGKaQkSHUAXGDXKs
+    required:
+      - status
+      - message
+  Thumbnail:
+    properties:
+      success:
+        type: boolean
+        example: success
+      data:
+        type: object
+        properties:
+          imagePath:
+            type: string
+            example: usr/bin/img/thumbnail.jpg
+          message:
+            type: string
+            example: image resized successfully!
+  Json-patch:
+    properties:
+      success:
+        type: boolean
+        example: success
+      data:
+        type: object
+        properties:
+          imagePath:
+            type: string
+            example: usr/bin/img/thumbnail.jpg
+          message:
+            type: string
+            example: image resized successfully!
+tags:
+  - name: Login
+  - name: Thumbnail
+  - name: Json-patch
